@@ -1,0 +1,729 @@
+body{
+    background-color: rgb(211, 211, 211);     /*---change color scheme---*/
+    font-family: 'Roboto', sans-serif;
+    margin: 0px;
+    max-width: 100%;
+    left:0;
+    right:0;
+
+    overflow-x: hidden;
+}
+
+/* -----------LOADER-------------*/
+
+#loader-wrapper{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000000;
+}
+
+#loader{
+    display: block;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    width: 150px;
+    height: 150px;
+    margin: -75px 0 0 -75px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #5D5C61;
+
+    -webkit-animation: spin 2.5s infinite; /* Chrome, Opera 15+, Safari 5+ */
+    animation: spin 2.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+
+    z-index: 1000001;
+}
+
+#loader:before{
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #7395ae;
+
+    -webkit-animation: spin 3.5s infinite; /* Chrome, Opera 15+, Safari 5+ */
+    animation: spin 3.5s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+}
+
+#loader:after{
+    content: "";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    right: 15px;
+    bottom: 15px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #b1a296;
+
+    -webkit-animation: spin 2s infinite; /* Chrome, Opera 15+, Safari 5+ */
+    animation: spin 2s linear infinite; /* Chrome, Firefox 16+, IE 10+, Opera */
+}
+
+@-webkit-keyframes spin {
+    0%   { 
+        -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(0deg);  /* IE 9 */
+        transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+     }
+    100% {
+        -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(360deg);  /* IE 9 */
+        transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+  }
+  @keyframes spin {
+    0%   { 
+        -webkit-transform: rotate(0deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(0deg);  /* IE 9 */
+        transform: rotate(0deg);  /* Firefox 16+, IE 10+, Opera */
+     }
+    100% {
+        -webkit-transform: rotate(360deg);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: rotate(360deg);  /* IE 9 */
+        transform: rotate(360deg);  /* Firefox 16+, IE 10+, Opera */
+    }
+}
+
+#loader-wrapper .loader-section {
+    position: fixed;
+    top: 0;
+    width: 51%;
+    height: 100%;
+    background: #222222;
+    z-index: 1000000;
+    -webkit-transform: translateX(0);  /* Chrome, Opera 15+, Safari 3.1+ */
+    -ms-transform: translateX(0);  /* IE 9 */
+    transform: translateX(0);  /* Firefox 16+, IE 10+, Opera */
+}
+
+#loader-wrapper .loader-section.section-left{
+    left: 0;
+}
+
+#loader-wrapper .loader-section.section-right{
+    right: 0;
+}
+
+.loaded #loader-wrapper .loader-section.section-left{
+    -webkit-transform: translateX(-100%);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: translateX(-100%);  /* IE 9 */
+            transform: translateX(-100%);  /* Firefox 16+, IE 10+, Opera */
+
+    -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
+            transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
+}
+
+.loaded #loader-wrapper .loader-section.section-right{
+    -webkit-transform: translateX(100%);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: translateX(100%);  /* IE 9 */
+            transform: translateX(100%);  /* Firefox 16+, IE 10+, Opera */
+
+    -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
+            transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);  /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
+}
+
+.loaded #loader {
+    opacity: 0;
+    -webkit-transition: all 0.3s ease-out;  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
+            transition: all 0.3s ease-out;  /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
+}
+
+.loaded #loader-wrapper{
+    visibility: hidden;
+
+    -webkit-transform: translateY(-100%);  /* Chrome, Opera 15+, Safari 3.1+ */
+        -ms-transform: translateY(-100%);  /* IE 9 */
+            transform: translateY(-100%);  /* Firefox 16+, IE 10+, Opera */
+
+    -webkit-transition: all 0.3s 1s ease-out;  /* Android 2.1+, Chrome 1-25, iOS 3.2-6.1, Safari 3.2-6  */
+            transition: all 0.3s 1s ease-out;  /* Chrome 26, Firefox 16+, iOS 7+, IE 10+, Opera, Safari 6.1+  */
+}
+
+    /* JavaScript Turned Off */
+.no-js #loader-wrapper {
+    display: none;
+}
+.no-js h1 {
+     color: #222222;
+}
+/*----------------END OF LOADER-------------------*/
+
+
+.navbar {
+    overflow: hidden;
+    background-color: #c3c3c3;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    padding-left: 10px;
+    z-index: 5000;
+}
+
+  /* Links inside the navbar */
+.navbar a {
+    float: left;
+    display: block;
+    color: #6b6b6b;
+    text-align: center;
+    padding-top: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 14px;
+    margin-top: 10px;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.5s;
+}
+  
+  /* Change background on mouse-over */
+.navbar a:hover {
+    border-bottom: 1px solid #000000;
+    color: #000000;
+}
+
+.navbar-active a{
+    border-bottom: 1px solid #000000;
+    color: #000000;
+}
+  
+  /* Main content */
+.main {
+    margin-top: 30px; /* Add a top margin to avoid content overlay */
+}
+
+.right{
+    float: right;
+    padding-right: 20px;
+}
+
+.index-right{
+    float: right;
+    padding-top: 18px;
+    padding-right: 20px;
+}
+
+/*.nav-item-container*/
+
+.container{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 38px;
+    padding-bottom: 20px;
+}
+
+.left{
+    display: flex;
+    text-align: left;
+}
+
+.nav-wrapper > .left > div{
+    margin-right: 20px;
+    font-size: 0.9em;
+    float: right;
+}
+
+.nav-link-wrapper{
+    height: 22px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.5s;
+}
+
+.nav-link-wrapper a{
+    color: #8a8a8a;
+    text-decoration: none;
+    transition: color 0.5s;
+}
+
+.nav-link-wrapper:hover{
+    border-bottom: 1px solid black;
+}
+
+.nav-link-wrapper a:hover{
+    color: black;
+    font-weight: bold;
+}
+
+.active-nav-link{
+    border-bottom: 1px solid black
+}
+
+.active-nav-link a {
+    color: black !important;
+    font-weight: bold;
+}
+
+.portfolio-items-wrapper{
+    padding-top: 35px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.top-programming-items-wrapper{         /*programming grid layout*/
+    padding-top: 0px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.bottom-programming-items-wrapper{
+    padding-top: 0px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+
+.portfolio-item-wrapper{
+    position: relative;
+    text-align: center;
+}
+
+.portfolio-img-background{
+    height: 49vh;
+    max-height: 1440px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.img-text-wrapper a{
+    text-decoration: none;
+}
+
+.img-text-wrapper{
+    position: absolute;
+    top: 0;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+.img-text-wrapper .subtitle{
+    transition: 0.75s;
+    font-weight: 600;
+    color: transparent;
+    position: relative;
+    text-align: center;
+    padding: 10px;
+}
+
+.portfolio-item-wrapper:hover .subtitle{        /*(hovering over):hover (do this)*/
+    font-weight: 600;
+    color:rgb(211, 211, 211);
+    font-size: 30px;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+    overflow: hidden;
+}
+
+.img-darken{
+    transition: 0.75s;
+    filter: brightness(10%);
+    overflow: hidden;
+    width: 140%;
+    z-index: 500;                    
+    /* possibly make a blue transition as well but need to find how to do it */
+
+}
+
+.img-lighten{
+    transition: 1s;
+    filter: brightness(100%);
+    width: 100%;
+    z-index: 500;
+}
+
+.two-column-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.profile-image-wrapper img{
+    width: 100%;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.profile-image-wrapper-small img{
+    width: 80%;
+    padding: 10px;
+}
+
+.profile-image-wrapper-verysmall img{
+    width: 40%;
+    padding: 10px;
+}
+
+.profile-content-wrapper{
+    padding: 30px;
+    padding-bottom: 0px;
+    text-align: left;
+    font-size: 1.25vw;
+}
+
+.profile-content-wrapper h1, h2{
+    color: #6b6b6b;
+}
+
+.bottom-wrapper{
+    font-size: 10px;
+    margin-top: 0px;
+    color: #b8b8b8;
+    text-align: center;
+}
+
+.no-bullets{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+.space{
+    padding-top: 10px;
+}
+
+.backbutton{
+    position: fixed;
+    right: 10px;
+    bottom: 10px;
+}
+
+.title{
+    text-align: center;
+    color: #6b6b6b;
+    text-decoration: none;
+}
+
+.image-wrapper{
+    width: 100%;
+    max-width: 100px;
+    height: auto;
+}
+
+.center-imgs{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%
+}
+
+.fade{
+    opacity: 0;
+}
+
+.gallary-fade{
+    opacity: 0;
+    transform: translateY(20vh);
+    visibility: hidden;
+    transition: opacity 0.6s ease-out, transform 1.2s ease-out;
+    will-change: opacity, visibility;
+}
+
+.gallary-fade.is-visible{
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+}
+
+  /* Position the image container (needed to position the left and right arrows) */
+.gallary-container{
+    position: relative;
+    box-sizing: border-box;
+    opacity: 1;
+    width: 100%;
+}
+
+  /* Hide the images by default */
+.mySlides {
+    display: none;
+}
+  
+  /* Add a pointer when hovering over the thumbnail images */
+.cursor {
+    cursor: pointer;
+}
+  
+  /* Next & previous buttons */
+.prev,
+.next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+  
+  /* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+  
+  /* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+  
+  /* Number text (1/3 etc) */
+.numbertext {
+    color: #f2f2f2;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+  
+  /* Container for image text */
+.caption-container {
+    text-align: center;
+    background-color: #222;
+    padding: 2px 16px;
+    color: white;
+}
+  
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+  
+  /* Six columns side by side */
+.column {
+    float: left;
+    width: 12.5%;
+}
+
+.award-column {
+    float: left;
+    width: 25%;
+}
+  
+  /* Add a transparency effect for thumnbail images */
+.demo {
+    opacity: 0.6;
+}
+  
+.active-gallary,
+.demo:hover {
+    opacity: 1;
+}
+
+.portfolio-container{
+    width: 100%;
+}
+
+.spacing{
+    margin-top: 100px;
+}
+
+center{
+    padding: 0;
+
+}
+
+  /* ------------ scrolling references -------------- */
+
+  /* Slideshow container */
+.slideshow-container {
+    position: relative;
+    background: rgb(211, 211, 211);
+    font-size: 1.2vw;
+}
+  
+  /* Slides */
+.reference-Slides {
+    display: none;
+    padding: 80px;
+    text-align: center;
+}
+  
+  /* Next & previous buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -30px;
+    padding: 16px;
+    color: #888;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+}
+  
+  /* Position the "next button" to the right */
+.next {
+    position: absolute;
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+  
+  /* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+    background-color: rgba(0,0,0,0.8);
+    color: rgb(211, 211, 211);
+}
+  
+  /* The dot/bullet/indicator container */
+.dot-container {
+    text-align: center;
+    padding: 20px;
+    background: #c3c3c3;
+}
+  
+  /* The dots/bullets/indicators */
+.dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+  
+  /* Add a background color to the active dot/circle */
+.active-dot, .dot:hover {
+    background-color: #6b6b6b;
+}
+  
+  /* Add an italic font style to all quotes */
+q {font-style: italic;}
+  
+  /* Add a blue color to the author */
+.author {color: #888888;}
+
+.blog-section-container{
+    background: transparent;
+    min-width: 600px;
+    max-width: 1000px;
+    background: #c3c3c3;
+}
+
+.blog-header{
+    font-size: 40px;
+    text-align: center;
+    color: #6b6b6b;
+    padding: 1px;
+}
+
+.blog-container{
+    background-color: #c3c3c3;
+    max-width: 50%;
+    font-size: 16px;
+
+    padding-left: 35px;
+    padding-right: 35px;
+    padding-bottom: 1px;
+
+    margin-left: 50px;
+
+    width:800px; 
+    margin:0 auto;
+}
+
+.blog-image-wrapper img{
+    width: auto;
+    max-width: 100%;
+}
+
+.blog-content-wrapper{
+    opacity: 100%;
+    padding-bottom: 10px;
+}
+
+.cv-profile-content-wrapper{
+    padding: 10px;
+    padding-bottom: 0px;
+    text-align: center;
+    font-size: 1.5vw;
+    color: #6b6b6b;
+}
+
+.pdf{
+    max-width: 800px;
+    height: auto;
+    margin: auto;
+    padding: 20px 10px 20px 10px;
+}
+
+#presentation{
+    padding-top: 20px;
+}
+
+/* test certificate css */
+.certificate-container4{
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    gap: 10px;
+    row-gap: 25px;
+}
+
+.certificate-container2{
+    display: grid;
+    grid-template-columns: 50% 50%;
+    row-gap: 25px;
+    gap: 20px;
+}
+
+.certificate4{
+    width: 100%;
+    transition: all .2s cubic-bezier(.1,.66,.08,.92);
+    padding-top: 20px;
+    max-height: 150px;
+    object-fit: cover;
+
+}
+
+.certificate4:hover{
+    transform: scale(2.25) translateY(-25%);
+    z-index: 50;
+}
+
+.certificate2{
+    width: 100%;
+    transition: all .2s cubic-bezier(.1,.66,.08,.92);
+    padding-top: 20px;
+}
+
+.certificate2:hover{
+    transform: scale(1.5);
+    z-index: 50;
+}
+
+.clean-link{
+    color: black;
+}
+

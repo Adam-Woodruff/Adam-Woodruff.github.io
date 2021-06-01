@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>website code</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="stylesheet.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/ico" href="assets/icons/icon.png">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+
+</head>
+
+<body>
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
+    <div class="container">
+        <div class="nav">
+            <div class="left">
+                <div class="nav-link-wrapper">
+                    <a href="index.html#home">HOME</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="index.html#about">ABOUT</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="index.html#contact">CONTACT</a>
+                </div>
+            </div>
+        
+            <div class="right">
+                <div class="brand">
+                    <div>ADAM WOODRUFF</div>
+                </div>
+            </div>
+        </div>
+        <div class="blog-content-wrapper">
+            <div class="blog-container">
+                <div class="blog-header">
+                    <h1>A Level Maths in Python</h1>
+                </div>
+                <div class="blog-date">
+                    <p>29/04/2021</p>
+                </div>
+                <div class="blog-content-wrapper">
+                    <p>
+                        While covering my A level maths course I found the best way to break down and 
+                        understand the topic was to code to function. Doing this helped me to fully 
+                        understand the steps as I broke the function down into its most simple aspects. 
+                        Particularly with standard deviation, as when I coded it, it helped me to fully 
+                        understand how each part of the equation impacts the results. 
+                    </p>
+                    <h2>Standard Deviation</h2>
+                    <div class="blog-image-wrapper">
+                        <img src="assets/maths/standard-deviation.png" alt="IMAGE">
+                    </div>
+                    <P>
+                        To code this standard deviation function I first started by asking the user to 
+                        input whether they want to use a frequency of 1 or a variable frequency. This 
+                        choice meant the application was more useful. Firstly, I coded the linear function 
+                        to do this is first started by getting the user to input the length of the list 
+                        and assigning that number to a variable. I then got the user to enter the list 
+                        of numbers one by one and appending that number to a list. Then following the 
+                        formula, I found the mean of the list and subtracted that mean from every item 
+                        in the number list and squaring the result. This result I again appended into a 
+                        new list and found the square root of the sum of new list divided by the length 
+                        of the it. The result is the standard deviation of the list that the user inputted.
+                    </P>
+                    <div class="blog-image-wrapper">
+                        <img src="assets/maths/standard-deviation-code.png" alt="IMAGE">
+                    </div>
+                    <p>
+                        I used the same method to find the standard deviation of a variable frequency list. 
+                        The only difference being that I asked the user for the frequency of each item and 
+                        used that to calculate the standard deviation. Overall, my program works, but is not 
+                        very practical in the real work as my graphical calculator can calculate it with a 
+                        user interface. But the program served its purpose teaching me on a deeper level how 
+                        standard deviation works.
+                    </p>
+                    <h2>Finding the Discriminant</h2>
+                    <div class="blog-image-wrapper">
+                        <img src="assets/maths/quadratic formula.png" alt="IMAGE">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
+
+<script>
+    var body = document.body;
+    window.onload = function() {
+        body.classList.add("loaded");
+    }
+</script>

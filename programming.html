@@ -1,0 +1,190 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Adam Woodruff</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="fonts">
+    <link href="stylesheet.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/ico" href="assets/icons/icon.png">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+
+</head>
+
+<body>
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
+    <div class="container">
+        <div class="nav">
+            <div class="left">
+                <div class="nav-link-wrapper">
+                    <a href="index.html#home">HOME</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="index.html#about">ABOUT</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="index.html#contact">CONTACT</a>
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="Name">
+                    <div>ADAM WOODRUFF</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-wrapper">
+            <div class="top-programming-items-wrapper">
+                <div class="portfolio-item-wrapper">
+                    <div class="portfolio-img-background" style="background-image:url(assets/programming-projects/sudokuboard.png)"></div>
+                    <div class="img-text-wrapper">
+                        <a href="sudokupage.html">
+                            <div class="subtitle">Sudoku Solver</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio-item-wrapper">
+                    <div class="portfolio-img-background" style="background-image:url(assets/programming-projects/TypingTest.png)"></div>
+                    
+                    <div class="img-text-wrapper">
+                        <a href="https://adam-woodruff.github.io/Typing-Test/">
+                            <div class="subtitle">JS Typing Test</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-programming-items-wrapper">
+                <div class="portfolio-item-wrapper">
+                    <div class="portfolio-img-background" style="background-image:url(assets/programming-projects/code.jpg)"></div>
+                    
+                    <div class="img-text-wrapper">
+                        <a href="c++.html">
+                            <div class="subtitle">Learning C++</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio-item-wrapper">
+                    <div class="portfolio-img-background" style="background-image:url(assets/programming-projects/motion\ sensor.jpg)"></div>
+                    
+                    <div class="img-text-wrapper">
+                        <a href="motion-detection.html">
+                            <div class="subtitle">Raspberry PI Motion Detector</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="top-programming-items-wrapper">
+                <div class="portfolio-item-wrapper">
+                    <div class="portfolio-img-background" style="background-image:url(assets/programming-projects/mathsicon.jpg)"></div>
+                    <div class="img-text-wrapper">
+                        <a href="python-maths.html">
+                            <div class="subtitle">Maths in Python</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio-item-wrapper">
+                    <div class="portfolio-img-background" style="background-image:url(assets/programming-projects/SHAicon.png)"></div>
+                    <div class="img-text-wrapper">
+                        <a href="SHA-256.html">
+                            <div class="subtitle">SHA-256</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-programming-items-wrapper">
+                <div class="portfolio-item-wrapper">
+                    <div class="portfolio-img-background" style="background-image:url(assets/programming-projects/websitecode2.png)"></div>
+                    
+                    <div class="img-text-wrapper">
+                        <a href="websitecode.html">
+                            <div class="subtitle">This Website</div>
+                        </a>
+                    </div>
+                </div>
+                <div class="portfolio-item-wrapper">
+                    <div class="portfolio-img-background" style="background-image:url(assets/programming-projects/LoremIpsum.png)"></div>
+                    
+                    <div class="img-text-wrapper">
+                        <a href="https://adam-woodruff.github.io/Lorem-Ipsum/">
+                            <div class="subtitle">Lorem Ipsum</div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="bottom-wrapper">
+                <p> website designed and coded by me</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    const portfolioItems = document.querySelectorAll('.portfolio-item-wrapper')
+
+    var body = document.body;
+
+        /*detects if the user is idle*/
+    var inactivityTime = function () {
+        var time;
+        window.onload = resetTimer;
+        // DOM Events
+        document.onmousemove = resetTimer;
+        document.onkeypress = resetTimer;
+    
+        function logout() {     /*runs this after specified time*/
+
+        }
+    
+        function resetTimer() {
+            clearTimeout(time);
+            time = setTimeout(logout, 10000)    
+        }
+    };
+
+
+    //loading screen and fading in and out images 
+    window.onload = function() {
+        portfolioItems.forEach(portfolioItems => {
+            portfolioItems.childNodes[1].classList.add('img-darken');
+            console.log('darken has been added')
+        })
+        body.classList.add("loaded");
+        setTimeout(function(){
+            portfolioItems.forEach(portfolioItems => {
+                portfolioItems.childNodes[1].classList.add('img-lighten');
+                console.log('lighten has been added')
+            })
+        },750)
+        setTimeout(function(){
+            portfolioItems.forEach(portfolioItems => {
+                portfolioItems.childNodes[1].classList.remove('img-lighten');
+                portfolioItems.childNodes[1].classList.remove('img-darken');
+                console.log('lighten and darken has been removed ');
+            })
+        },1750)
+        inactivityTime();
+    }
+
+    //goes dark when mouse is over
+    portfolioItems.forEach(portfolioItems => {
+        portfolioItems.addEventListener('mouseover', () => {
+            portfolioItems.childNodes[1].classList.add('img-darken');
+        })
+        portfolioItems.addEventListener('mouseout', () => {
+            portfolioItems.childNodes[1].classList.remove('img-darken');
+        })
+    })
+
+
+</script>
+</html>

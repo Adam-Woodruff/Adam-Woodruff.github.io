@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>website code</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="stylesheet.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/ico" href="assets/icons/icon.png">
+
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+
+</head>
+
+<body>
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
+    <div class="container">
+        <div class="nav">
+            <div class="left">
+                <div class="nav-link-wrapper">
+                    <a href="index.html#home">HOME</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="index.html#about">ABOUT</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="index.html#contact">CONTACT</a>
+                </div>
+            </div>
+        
+            <div class="right">
+                <div class="brand">
+                    <div>ADAM WOODRUFF</div>
+                </div>
+            </div>
+        </div>
+        <div class="blog-content-wrapper">
+            <div class="blog-container">
+                <div class="blog-header">
+                    <h1>Sudoku Solver</h1>
+                </div>
+                <div class="blog-date">
+                    <p>02/05/2021</p>
+                </div>
+                <div class="blog-image-wrapper">
+                    <img src="assets/sudoku/sudokuboard.png" alt="sudoku board">
+                </div>
+                <div class="blog-content-wrapper">
+                    <p>
+                        During lockdown I wanted to improve my rusty programming skills 
+                        in preparation for my A levels as, I knew now was as good a time 
+                        as any with over 6 months off school.  With this free time, I wanted 
+                        to something to push my skills that was still within reason. This 
+                        being the case after researching what other people have made at a 
+                        similar skill level to me I decided to make a program that solves 
+                        sudoku boards. 
+                    </p>
+                    <p>
+                        To start with I looked at what other people had done to get an idea 
+                        on how this problem could be solved. I found that the most affective way
+                        to my knowledge was using backtracking. Solving as much of the board as 
+                        possible and going back if no numbers from 1-9 fit. In my program i wanted 
+                        to include a algorithm that generated boards that could be solved. But this 
+                        proved more hard than anticipated. Whilst I did struggle with this i 
+                        found a work-around but my main objective for this project was to pick up 
+                        lost habits and create a well written program.
+                    </p>
+                    <p>
+                        I spent about a week creating this program mulling over different more 
+                        efficient methods but I found, the way <a href="https://www.techwithtim.net/tutorials/python-programming/sudoku-solver-backtracking/">Tech With Tim<a>
+                         did it best. So, i followed his tutorial for the most part adapting some 
+                         of the code to be more organised as well as adding a menu using dictionaries
+                        and the mentioned board generator. 
+                    </p>
+                </div>
+                <div class="blog-image-wrapper">
+                    <img src="assets/sudoku/sudokumenu.png" alt="sudoku dictionary menu">
+                </div>
+                <div class="blog-content-wrapper">
+                    <p>
+                        The menu part of the code that is seemingly very simple is a part I 
+                        spent quite a lot of time on. The typical if elif menu in python despite
+                        being very popular is very inefficient as the program has to go through 
+                        every if statement and it is also very messy. So, in my code i wanted to 
+                        create a more clean and efficient menu. While this might seem simple for 
+                        someone with more experience, creating the new menu (above) i found to be 
+                        quite difficult to wrap my head around with use of newly introduced dictionaries. 
+                        After coding, the menu proved its value and enabled me the possibility to 
+                        add many more options without making my code a mess.
+                    </p>
+                </div>
+                <div class="blog-image-wrapper">
+                    <img src="assets/sudoku/sudoku_solve_valid.png" alt="sudoku solve code">
+                </div>
+                <div class="blog-content-wrapper">
+                    <p>
+                        After coding the menu I started with the core of the project, the solving function. 
+                        To do this I hard coded an empty board and following the premise of the 
+                        <a href="https://www.techwithtim.net/tutorials/python-programming/sudoku-solver-backtracking/">Tech With Tim<a> 
+                        tutorial i created working function that iterates through each item in the board 
+                        trying numbers 1-9. 
+                        Although this sounds simple, determining if a numbers works is actualy more complex 
+                        than first glance. This is because for a sudoku board to work there must be no 
+                        repeating numbers vertically, horizontally or in the 3x3 section of the grid. So in order 
+                        for the program to find if a number works the "solve" function must call the "valid" function 
+                        which checks to see if that number is valid. If the number is valid it returns True and the 
+                        iterated number i is place there.
+                    </p>
+                </div>
+                <div class="blog-image-wrapper">
+                    <img src="assets/sudoku/sudoku_random.png" alt="random sudoku board generator code">
+                </div>
+                <div class="blog-content-wrapper">
+                    <p>
+                        The above function generates the random board. This was the most time-consuming part of the 
+                        project as I tried it multiple ways to no avail. And after about 3 days of trying, it different 
+                        ways I resorted to a dubious work around. My code works by iterating 9 times and generating an 
+                        array of a random length with a random number sampled from a 1-9list. These are the numbers that 
+                        will be in the sudoku board. I then repeat this step but this time generating an array for the 
+                        positions of the aforementioned numbers. These positions are generated by using the random sample 
+                        from the 1-9 list but this time with the same length as the numbers. Each list is then passed the 
+                        valid function to be checked and see if the number can be placed there. After the board is 
+                        assembled the result is a board with no guarantee that is can be solved. This is because while the 
+                        board is empty the numbers work as there are very few that would cause conflict. But as the board 
+                        is solved numbers placed by the user could cause conflict making the board impossible. My solution 
+                        to this while not the best was to run the random board function the necessary times to generate a 
+                        board that works. While this is not ideal i had spent so much time on the project i was getting 
+                        tired of the same problem so decided to cut my losses are start another project. 
+                    </p>
+                </div>
+                <div class="blog-image-wrapper">
+                    <img src="assets/sudoku/sudokuresults.png" alt="random sudoku board generator code">
+                </div>
+                <div class="blog-content-wrapper">
+                    <p>
+                        Above are the results of my program solving the 
+                        <a href="https://www.conceptispuzzles.com/index.aspx?uri=info/article/424#:~:text=In%202012%2C%20Finnish%20mathematician%20Arto,would%20%22score%20an%20eleven%22.">hardest sudoku board</a>
+                        seemingly instantly. While i am happy with the outcome of this project i would in the future 
+                        like to come back to this project to fix some of the errors and make it more stream lined.
+                        In total i spent about 6 hours over a fortnight coding this project and while that may seem 
+                        like a lot for a simple project this was my first time coding in over a year and my main 
+                        objective was to just refresh my skills.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-wrapper">
+            <p> website designed and coded by me</p>
+        </div>
+    </div>
+</html>
+
+<script>
+    var body = document.body;
+    window.onload = function() {
+        body.classList.add("loaded");
+    }
+</script>

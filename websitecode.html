@@ -1,0 +1,119 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>website code</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="stylesheet.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/ico" href="assets/icons/icon.png">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+
+</head>
+
+<body>
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
+    <div class="container">
+        <div class="nav">
+            <div class="left">
+                <div class="nav-link-wrapper">
+                    <a href="index.html#home">HOME</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="index.html#about">ABOUT</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="index.html#contact">CONTACT</a>
+                </div>
+            </div>
+        
+            <div class="right">
+                <div class="brand">
+                    <div>ADAM WOODRUFF</div>
+                </div>
+            </div>
+        </div>
+        <div class="blog-content-wrapper">
+            <div class="blog-container">
+                <div class="blog-header">
+                    <h1>Website Development</h1>
+                </div>
+                <div class="blog-date">
+                    <p>02/04/2021</p>
+                </div>
+                <div class="blog-image-wrapper">
+                    <img src="assets/website/website home.png" alt="IMAGE">
+                </div>
+                <div class="blog-content-wrapper">
+                    <p>In the spirit of trying to make my self more appealing to employers and universities in January of 2021 
+                        I set out on creating my own website. The main reason behind this being to display some of my programming 
+                        projects as well as making a home for my cv. While I knew some basic HTML and CSS through my A level 
+                        computer science course creating a good-looking website seemed out of the question. Despite this after 
+                        about a few weeks completing the Free Code Camp web design course refreshing my knowledge, I managed to 
+                        create the bones of my static website. As well as following typical design practice I also wanted to 
+                        base the structure of my website around a few core things - </p>
+                    <ul>
+                        <li>Display my 3D modelling portfolio without long loading times.</li>
+                        <li>Show case more advanced techniques.</li>
+                        <li>Make sure the site is as user friendly as possible.</li>
+                    </ul>
+                    <p>This in mind I slowly started adding more and more building out the website making sure to use good 
+                        etiquette while developing and keeping a consistent colour scheme To make the home page I used CSS 
+                        grid. I found using this to be very helpful as it enables vast amounts of flexibility. In each grid 
+                        I used an image this has two purposes, to act as a navigation hub and to show case some renders I 
+                        have made. I feel my use of CSS grid at the top of the home page catches a viewer’s attention attention 
+                        and show I have put effort the thought into it. For the images to be used for navigation they needed 
+                        to have text saying where they would take you to. To do this I added a CSS transition that fades 
+                        the images using the filter brightness function. I then added another transition to the text making 
+                        it fade into view. The result I feel to be quite aesthetically appealing and is easily navigable. 
+                        Using a similar approach, I designed the layout of my other pages again using CSS grid to keep each 
+                        page tidy.
+                    </p>
+                    <div class="blog-image-wrapper">
+                        <img src="assets/website/portfolio.png" alt="IMAGE">
+                    </div>
+                    <p>
+                        To ensure loading times are as short as possible particularly on the <a href="portfolio.html"> 3D portfolio page</a> 
+                        I made sure to use lower resolution images. To help with this I also added a loading screen, despite not helping 
+                        with the loading times this does keep the viewers attention.<br> While I understand that making a static website 
+                        is not rocket science, I am still very happy with the result of this website. I have surpassed my personal expectations.  
+                        Being my first site it is by no means perfect but is feel I have created a good looking website that does exactly 
+                        what I need it to do.
+                    </p>
+                    <div class="blog-image-wrapper">
+                        <img src="assets/website/apache.png" alt="IMAGE">
+                    </div>
+                    <p>After finishing the website, I needed a means of hosting it. I had many options for this but firstly I wanted to 
+                        try hosting is on my raspberry pi using apache. This was relatively straight forward taking about 20 minutes to 
+                        set up. I found the best part about apache was how easy it was to manage. To update the website, I could just use 
+                        the SCP command built into windows to transfer the files from my desktop to the raspberry pi, then using SSH I 
+                        could restart apache all in all taking less than 3 minutes. While it was very convenient to host on a raspberry 
+                        pi there were a few draw backs. Firstly, my area has very bad internet meaning loading times were very long. I had 
+                        also read about security concerns on the latest apache version. This combined put me off as I just could not justify 
+                        it when there were much better free alternatives. Next, I tried what I am using now, GitHub pages, this solution 
+                        has worked very well. The reason I prefer this solution to apache is because updating the website is as easy as 
+                        pushing the changes to the git repository and refreshing the browser. Combined with the fast loading times makes 
+                        this a far superior option The Github student pack also enables me to get loads of free benefits including a free 
+                        domain for my website.  </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
+
+<script>
+    var body = document.body;
+    window.onload = function() {
+        body.classList.add("loaded");
+    }
+</script>

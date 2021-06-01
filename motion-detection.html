@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>website code</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="stylesheet.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/ico" href="assets/icons/icon.png">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+
+</head>
+
+<body>
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
+    <div class="container">
+        <div class="nav">
+            <div class="left">
+                <div class="nav-link-wrapper">
+                    <a href="index.html#home">HOME</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="index.html#about">ABOUT</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="index.html#contact">CONTACT</a>
+                </div>
+            </div>
+        
+            <div class="right">
+                <div class="brand">
+                    <div>ADAM WOODRUFF</div>
+                </div>
+            </div>
+        </div>
+        <div class="blog-content-wrapper">
+            <div class="blog-container">
+                <div class="blog-header">
+                    <h1>Raspberry PI motion-detection</h1>
+                </div>
+                <div class="blog-date">
+                    <p>10/05/2021</p>
+                </div>
+                <div class="blog-content-wrapper">
+                    <p>
+                        For this project I used my new raspberry pi camera combined with some code to create a simple motion 
+                        sensor. To start with I familiarized my self with the pycamera documentation leaning the basics like 
+                        how to take pictures and record video. After learning some of the basics I started coding the program. 
+                        The basic premise is to take some random samples of the video feed and to measure if the change is 
+                        greater than a specified boundary. 
+                    </p>
+                    <p>To start I made sure to import the camera and set the resolution to a reasonable amount that the raspberry 
+                        pi could handle. I then made the PI repeatedly take an image and append the RGB value of each pixel to 
+                        an array. This numerical interpretation of the image could easily be compared using an if statement 
+                        on the next frame. The problem with this is even the slightest variation in the picture would result 
+                        in a movement output so I needed to find a work around. My solution to this was to take 8 random samples 
+                        of two frames this reduced some bias and was enough to detect motion. I then subtracted each RGB value 
+                        of each sample to the other frame counterpart. This subtraction when there was not movement was close 
+                        to 0 and when there was movement was bigger. To interpret this in code I said if x (the subtracted values) 
+                        was less that -10 or greater than 10 there is no motion. This allows for just enough variation in the 
+                        image for there not to be any false positives but easily detect motion.
+                    </p>
+                    <div class="blog-image-wrapper">
+                        <img src="assets/PI-motion-detector/RGB-capture.png" alt="IMAGE">
+                    </div>
+                    <p>
+                        Each time there was change in the RGB value of a sample I added 1 to a movement variable. I used this 
+                        variable to remove some more bias as in order to be sure there is motion the code would need to detect 
+                        change in at least half the samples. This again helped to remove bias. To make to code run faster on the 
+                        Raspberry PI I had to make some optimisations. Namely I set the resolution of the camera to 800x600 this 
+                        put less strain on encoding the video and could still be lowered to improve speed. I also let the user 
+                        change the number of samples. This is compromise as in different situations you might need. Because the 
+                        number of the samples dramatically affects the speed of the programme, I set it to 8 and I found this 
+                        to be enough to be both fast and reliable. In the future more optimisations could be made for example 
+                        comparing only 1 RGB value would make if faster at a trade-off of accuracy.
+                    </p>
+                    <div class="blog-image-wrapper">
+                        <img src="assets/PI-motion-detector/comparison.png" alt="IMAGE">
+                    </div>
+                    <p>To help give this project some more functionality I wanted to make it is I would be notified when the 
+                        program detected motion. To do this I made a simple discord bot hooked up toa private server, here 
+                        once the code detected motion the discord bot sent the image in which it detected motion. This simple 
+                        discord implementation proved to be a very effective way of notifying other devices and even people. 
+                        In the future I could develop this further using raspberry pi 0’s to create a network of motion detecting 
+                        cameras much like the <a href="https://github.com/ccrisan/motioneyeos/wiki">MotionEye OS</a> I had 
+                        previously set up.
+                    </p>
+                    <div class="blog-image-wrapper">
+                        <img src="assets/PI-motion-detector/discord.png" alt="IMAGE">
+                    </div>
+                    <i>image purple as my camera uses infrared to see in the dark</i>
+                    <p>You can find the code in the <a href="https://github.com/Adam-Woodruff/PI-motion-detection">Github repository</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
+
+<script>
+    var body = document.body;
+    window.onload = function() {
+        body.classList.add("loaded");
+    }
+</script>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>website code</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="stylesheet.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/ico" href="assets/icons/icon.png">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+
+</head>
+
+<body>
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
+    <div class="container">
+        <div class="nav">
+            <div class="left">
+                <div class="nav-link-wrapper">
+                    <a href="index.html#home">HOME</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="index.html#about">ABOUT</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="index.html#contact">CONTACT</a>
+                </div>
+            </div>
+        
+            <div class="right">
+                <div class="brand">
+                    <div>ADAM WOODRUFF</div>
+                </div>
+            </div>
+        </div>
+        <div class="blog-content-wrapper">
+            <div class="blog-container">
+                <div class="blog-header">
+                    <h1>SHA-256</h1>
+                </div>
+                <div class="blog-date">
+                    <p>23/05/2021</p>
+                </div>
+                <div class="blog-image-wrapper">
+                    <img src="assets/programming-projects/SHAicon.png" alt="IMAGE">
+                </div>
+                <div class="blog-content-wrapper">
+                    <p>To broaden my horizons in the world of computer science and following on from my recent 
+                        interest in encryption I endeavoured in creating my own python implementation of the 
+                        SHA-256 algorithm. From what I understand SHA-256 is among the most secure hashing 
+                        algorithms that exist. At its core, a hashing algorithm takes text of any length and 
+                        following the algorithm converts it into a unique 256-bit string of hexadecimal characters. 
+                        The main selling point being that this cryptographic function is impossible to reverse 
+                        given the hash and given current technology it would take on of the worlds fastest 
+                        super computers over <a href="https://www.quora.com/How-long-would-it-take-to-crack-SHA-256">(1.1 * 10 ^ 57) years</a> 
+                        Its most popular applications include bitcoin and data security 
+                    </p>
+                    <p>To code the algorithm, I first had to fully understand the deeper working of it what 
+                        happens to the data when inputted. To do this I read through lots of sources and watches 
+                        a handful of videos one <a href="https://www.youtube.com/watch?v=f9EbD6iY9zI"> video 
+                        particularly helpful</a> help me understand how the functions like choice and 
+                        majority are used with real data. But to make sure my hash algorithm was up to 
+                        standard I tried my best to follow <a href=https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf> 
+                        the federal standards.</a> This also showed me how some of the functions can be written 
+                        more simply using bit operations.
+                    </p>
+                    <p>
+                        The code is structured so as that it asks for the use to input ascii txt. It then 
+                        converts it to a byte-array, adds 64 bits to mark the length of the message and pads 
+                        the message to a multiple of 512 bits. This message is then split into an array of 64 
+                        bit “words”. Next the program begins creating the message schedule, to do this it loops 
+                        t through 64 times (as there needs to be 64 words) doing this It applies the specific 
+                        functions sigma0 and sigma1 to their respective words and appends it to the message.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
+
+<script>
+    var body = document.body;
+    window.onload = function() {
+        body.classList.add("loaded");
+    }
+</script>

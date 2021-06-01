@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>website code</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="stylesheet.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/ico" href="assets/icons/icon.png">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+
+</head>
+
+<body>
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
+    <div class="container">
+        <div class="nav">
+            <div class="left">
+                <div class="nav-link-wrapper">
+                    <a href="index.html#home">HOME</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="index.html#about">ABOUT</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="index.html#contact">CONTACT</a>
+                </div>
+            </div>
+        
+            <div class="right">
+                <div class="brand">
+                    <div>ADAM WOODRUFF</div>
+                </div>
+            </div>
+        </div>
+        <div class="blog-content-wrapper">
+            <div class="blog-container">
+                <div class="blog-header">
+                    <h1>learning C++</h1>
+                </div>
+                <div class="blog-date">
+                    <p>07/05/2021</p>
+                </div>
+                <div class="blog-image-wrapper">
+                    <img src="images/camo.png" alt="IMAGE">
+                </div>
+                <div class="blog-content-wrapper">
+                    <p>
+                        To better my knowledge in computer science over lockdown of 2020 I decided I 
+                        should attempt to broaden my horizon and learn a new language, so I though what 
+                        better language to learn than what is commonly regarded as the hardest. Not knowing 
+                        this at the time I looked around the internet for some tutorials on how to make basic 
+                        applications. To start my journey, I created a keylogger making use of C++’s built 
+                        in keypress functions. This useless program taught me not only some of the very basics, 
+                        but also that learning C++ was going to be much harder that I played it out to be. After 
+                        completing this project, I followed a tutorial teaching how to make a simple game of 
+                        snake. This gave me some very valuable insight showing me more techniques I would 
+                        not have used otherwise like switch statements and displaying how pointers would 
+                        be used in context. Taking longer than expected I finished the project now hungry 
+                        to try code something of my own. My plan was to create a simple graph tool. This 
+                        would make used of my newly learned switch statements and for loop format to plot 
+                        a graph of a polynomial on to the terminal window. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
+
+<script>
+    var body = document.body;
+    window.onload = function() {
+        body.classList.add("loaded");
+    }
+</script>
