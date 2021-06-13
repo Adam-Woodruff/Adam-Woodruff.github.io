@@ -515,6 +515,7 @@ body{
     content: "";
     display: table;
     clear: both;
+    width: 100%;
 }
   
   /* Six columns side by side */
@@ -530,7 +531,6 @@ body{
   
   /* Add a transparency effect for thumnbail images */
 .demo {
-    height: 8rem;
     opacity: 0.6;
 }
   
@@ -673,7 +673,7 @@ q {font-style: italic;}
 }
 
 .pdf{
-    max-width: 800px;
+    /* max-width: 800px; */
     height: auto;
     margin: auto;
     padding: 20px 10px 20px 10px;
@@ -684,12 +684,6 @@ q {font-style: italic;}
 }
 
 /* test certificate css */
-.certificate-container4{
-    display: grid;
-    grid-template-columns: 25% 25% 25% 25%;
-    gap: 10px;
-    row-gap: 25px;
-}
 
 .certificate-container2{
     display: grid;
@@ -698,22 +692,9 @@ q {font-style: italic;}
     gap: 20px;
 }
 
-.certificate4{
-    width: 100%;
-    transition: all .2s cubic-bezier(.1,.66,.08,.92);
-    padding-top: 20px;
-    max-height: 150px;
-    object-fit: cover;
-
-}
-
-.certificate4:hover{
-    transform: scale(2.25) translateY(-25%);
-    z-index: 50;
-}
-
 .certificate2{
-    width: 100%;
+    width: 95%;
+    padding-right: 5%;
     transition: all .2s cubic-bezier(.1,.66,.08,.92);
     padding-top: 10px;
 }

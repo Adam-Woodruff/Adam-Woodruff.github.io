@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>website code</title>
+    <title>SHA-256</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="stylesheet.css" rel="stylesheet">
@@ -74,6 +74,10 @@
                         the federal standards.</a> This also showed me how some of the functions can be written 
                         more simply using bit operations.
                     </p>
+                    <div class="blog-image-wrapper">
+                        <img src="assets/SHA-256/hashing.png" alt="IMAGE">
+                        <i>image from <a href="https://computersciencewiki.org/index.php/Hashing">Computer Science Wiki</a></i>
+                    </div>
                     <p>
                         The code is structured so as that it asks for the use to input ascii txt. It then 
                         converts it to a byte-array, adds 64 bits to mark the length of the message and pads 
@@ -81,6 +85,19 @@
                         bit “words”. Next the program begins creating the message schedule, to do this it loops 
                         t through 64 times (as there needs to be 64 words) doing this It applies the specific 
                         functions sigma0 and sigma1 to their respective words and appends it to the message.
+                    </p>
+                    <p> 
+                        Next the program initialises the working values calculated by doing the square root of 
+                        the first 8 prime numbers assigning each value as an item as a list. Then the program 
+                        works through the 64 words working its way through item by item doing the functions 
+                        Uppercase Sigma 0 and Uppercase Sigma 1 to their respective words. After the program 
+                        has looped through every word the program then loops through 8 times adding each item 
+                        pair, appending itself to create a list and being converted to hex to result in a hash 
+                        string. 
+                    </p>
+                    <p> 
+                        While this is extremely oversimplified the basic premise is the same.<br>
+                        You can find the code for this project in my <a href="https://github.com/Adam-Woodruff/SHA-256"> Github page.</a>
                     </p>
                 </div>
             </div>

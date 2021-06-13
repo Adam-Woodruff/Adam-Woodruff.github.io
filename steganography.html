@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Image Steganography</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link href="stylesheet.css" rel="stylesheet">
+    <link rel="shortcut icon" type="image/ico" href="assets/icons/icon.png">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
+
+</head>
+
+<body>
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+
+    </div>
+    <div class="container">
+        <div class="nav">
+            <div class="left">
+                <div class="nav-link-wrapper">
+                    <a href="index.html#home">HOME</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="index.html#about">ABOUT</a>
+                </div>
+
+                <div class="nav-link-wrapper">
+                    <a href="index.html#contact">CONTACT</a>
+                </div>
+            </div>
+        
+            <div class="right">
+                <div class="brand">
+                    <div>ADAM WOODRUFF</div>
+                </div>
+            </div>
+        </div>
+        <div class="blog-content-wrapper">
+            <div class="blog-container">
+                <div class="blog-header">
+                    <h1>Image Steganography</h1>
+                </div>
+                <div class="blog-date">
+                    <p>13/06/2021</p>
+                </div>
+                <div class="blog-image-wrapper">
+                    <img src="assets/programming-projects/steganography.png" alt="IMAGE">
+                </div>
+                <div class="blog-content-wrapper">
+                    <p>
+                        Through time wasted watching YouTube videos over half term I ended up researching a lot 
+                        about steganography and some of the methods used to encrypt a message into an image. This 
+                        caught my interest as unlike typical encryption this message can be in plain sight yet 
+                        invisible. So inevitably I wanted to create my own version and the first step of this was 
+                        to plan it out deciding on what method I was going to use to encrypt the message. I decided 
+                        to use the least significant bit method partly because it is one of the simplest and most 
+                        easy to implement.
+                    </p>
+                    <p>
+                        Least significant bit works by taking the last bit of each RGB value of every pixel in an 
+                        image and changing it to part of the binary value for an ASCII character. This means each 
+                        pixel can have up to 3 bits of secret data stored. The way the code does this is by taking 
+                        the image and opening it into a numpy array using the Pillow image module. Here the image 
+                        is split into a 3D array with each RBG value nested into X and Y arrays. I then took the 
+                        user input and split it to binary and looped through each individual value taking the image 
+                        array and comparing the corresponding binary value of the RBG channels. To change the bits, 
+                        I used python’s built-in bitwise operators I first compared the two values, if they are the 
+                        same, I did not change them else I flipped the image array bit. This was repeated for each 
+                        binary value until the whole image was encoded. In making this program I encountered a few 
+                        difficulties, for example in black and white pixels I first had to check if the RGB value 
+                        was greater than 1 and less than 254 otherwise the program could add 1 to 255 causing it 
+                        to overflow and vice versa for black. I also had to make sure the program knew when to stop 
+                        otherwise it would turn each pixel to a character even if not encoded. To do this when 
+                        encoding I added 8 0’s. This meant when decoding it was easy to identify when the message 
+                        had stopped as when the mod of the length was 0 and the last 8 bits where 0’s the program 
+                        could stop.
+                    </p>
+                    <div class="blog-image-wrapper">
+                        <img src="assets/steganography/steganography-code.png" alt="IMAGE">
+                    </div>
+                    <p>
+                        Once the whole image had been encoded, I then used python pillow to reconstruct the image 
+                        from the new modified array resulting in a nearly identical image. In practice the change 
+                        in the images I so small the only practical way to detect the change would be to hash both 
+                        images and look for change in that. And while this is not the most secure and practical way 
+                        of sending a message creating this project was quite enjoyable as it posed some unique 
+                        problems. All in all, I would say I did a good job but like most things there is always a 
+                        better way of doing something. 
+                    </p>
+                    <p>
+                        You can find the code for this project on my <a href="https://github.com/Adam-Woodruff/python-image-steganography">Guthub page.</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
+
+<script>
+    var body = document.body;
+    window.onload = function() {
+        body.classList.add("loaded");
+    }
+</script>
