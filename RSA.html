@@ -2,11 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>RSA Encryption</title>
+    <title>Maths in Python</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="stylesheet.css" rel="stylesheet">
     <link rel="shortcut icon" type="image/ico" href="assets/icons/icon.png">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=0">
 
@@ -42,23 +43,26 @@
                 </div>
             </div>
         </div>
-
-        <div class="content-wrapper">
-            <div class="two-column-wrapper">
-                <div class="profile-image-wrapper">
-                    <img src="images/websitecode.png" alt="sudokusolver">
+        <div class="blog-content-wrapper">
+            <div class="blog-container">
+                <div class="blog-header">
+                    <h1>RSA encryption</h1>
                 </div>
-                <div class="profile-content-wrapper">
-                    <div class="space">
-                        <h1>RSA Encryption</h1>
-                        <p>
-                            CONTENT
-                        </p>
-
-                        <div class="profile-image-wrapper-small">
-                            <img src="images/imagedarken.png" alt="website code">
-                        </div>
+                <div class="blog-date">
+                    <p>12/11/2021</p>
+                </div>
+                <div class="blog-image-wrapper">
+                    <img src="assets/programming-projects/RSA.jpg" alt="IMAGE">
+                </div>
+                <div class="blog-content-wrapper">
+                    <p>To Aid in my computer science project in my spare time I decided to endeavour in programming my version of the widely used, RSA encryption algorithm. To get a basic idea of how I could go about doing this I watched videos of the maths behind how it works. This I found to be very useful particularly the videos from <a href="https://www.youtube.com/watch?v=6xDGSalpPXk&list=PL5KkMZvBpo5CdoOxa3dqll2n6KsXqerYO">Eddie Woo.</a></p>
+                    <p>After gaining the knowledge of how the algorithm works, I began piecing it together. Firstly, I started by generating the prime numbers used for the key. I did this by generating a random odd number checking to see if it was prime and if it wasn’t I added 2 and repeated until I found one. While this is most likely not the most efficient way it works in reasonable time for my use case. To check if the random number is prime, I used <a href="https://en.wikipedia.org/wiki/Fermat_primality_test"> Fermats test for primality </a> this test is thoroughly explained elsewhere on the internet but in general it is better to run the test multiple times as there is a small chance the test gives a false positive with specific numbers. </p>
+                    <div class="blog-image-wrapper">
+                        <img src="assets/RSA images/fermats test.png" alt="IMAGE">
                     </div>
+                    <p>When calculating large powers, the most popular method of calculation is typically modular exponentiation. While there is a built-in python function to do this that is almost certainly faster, I wanted to program my own function just to fully understand how it works. </p>
+                    <p>To generate the public key I followed the documented method as learnt from research. The public key must be between 1 and the number of co-primes of the two prime number generated while also being co-prime with the two primes number multiplied. </p>
+                    <p>Example:<br><br>P = 11, q = 13 <br><br> 5 x 7 = 143 <br><br> (11-1) (13-1) = 120 <br><br>Φ(n) = 120<br><br>This shows us there are no common factors between 7, 143 and 120 making them co-prime.<br><br>1 < 7 < 120 <br><br>So, 7 is our public key <br><br>The equation to find the private key makes use of both the public key and n so that it satisfies the equation </p>
                 </div>
             </div>
         </div>
