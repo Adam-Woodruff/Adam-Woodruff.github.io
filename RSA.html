@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>Maths in Python</title>
+    <title>RSA-Encryption</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <link href="stylesheet.css" rel="stylesheet">
@@ -61,8 +61,18 @@
                         <img src="assets/RSA images/fermats test.png" alt="IMAGE">
                     </div>
                     <p>When calculating large powers, the most popular method of calculation is typically modular exponentiation. While there is a built-in python function to do this that is almost certainly faster, I wanted to program my own function just to fully understand how it works. </p>
-                    <p>To generate the public key I followed the documented method as learnt from research. The public key must be between 1 and the number of co-primes of the two prime number generated while also being co-prime with the two primes number multiplied. </p>
+                    <p>To generate the privatekey I followed the documented method as learnt from research. The public key must be between 1 and the number of co-primes of the two prime number generated while also being co-prime with the two primes number multiplied. </p>
                     <p>Example:<br><br>P = 11, q = 13 <br><br> 5 x 7 = 143 <br><br> (11-1) (13-1) = 120 <br><br>Φ(n) = 120<br><br>This shows us there are no common factors between 7, 143 and 120 making them co-prime.<br><br>1 < 7 < 120 <br><br>So, 7 is our public key <br><br>The equation to find the private key makes use of both the public key and n so that it satisfies the equation </p>
+                    <p>After the private key had been generated, I used the extended Euclidean algorithm to calculate the public key. This calculates the greatest common divisor of p and q. The result from this function was the working public key.</p>
+                    <div class="blog-image-wrapper">
+                        <img src="assets/RSA images/euclid.png" alt="IMAGE">
+                    </div>
+                    <p>After the keys had been generated it is now just interpreting the input and encoding it using the keys. when using RSA encryption is the same process and decryption just with different keys, Because of this I made use of one function called conversion. This function used modular exponentiation to speed up the process of following the RSA formula for encryption and decryption.</p>
+                    <div class="blog-image-wrapper">
+                        <img src="assets/RSA images/conversion.png" alt="IMAGE">
+                    </div>
+                    <p>Example:<br><br>Public key = (7, 143) <br><br>Plain text – Hello World <br><br>Ascii equivalent – 72, 101, 108, 108, 111, 32, 87, 111, 114, 108, 100 <br><br>727 mod(143) = 19 <br>1017 mod(143) = 26 <br>1087 mod(143) = 4 <br>1087 mod(143) = 4 <br>1117 mod(143) = 45<br> 327 mod(143) = 98<br> 877 mod(143) = 87<br> 1117 mod(143) = 45<br> 1147 mod(143) = 49<br> 1087 mod(143) = 4<br> 1007 mod(143) = 100<br><br> Cypher text – 19, 26, 4, 4, 45, 98, 87, 45, 49, 4, 100 </p>
+                    <p>While this is an over simplified depiction of everything necessary to make this program work, I hope is has shed a bit of light as to my approach to the problem and how I tackled it.<br>You can find the code for this project on my <a href="https://github.com/Adam-Woodruff/RSA-Encryption">Github page</a></p>
                 </div>
             </div>
         </div>
